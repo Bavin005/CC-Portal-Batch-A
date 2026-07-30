@@ -1,0 +1,59 @@
+class Queue {
+    int[] arr = new int[100];
+    int front = -1;
+    int rear = -1;
+
+    void enqueue(int x) {
+        if (rear == arr.length - 1) {
+            System.out.println("Queue Overflow");
+            return;
+        }
+        if (front == -1)
+            front = 0;
+        arr[++rear] = x;
+    }
+
+    void dequeue() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue Underflow");
+            return;
+        }
+        front++;
+    }
+
+    void peek() {
+        if (front == -1 || front > rear)
+            System.out.println("Queue Underflow");
+        else
+            System.out.println(arr[front]);
+    }
+
+    void isEmpty() {
+        if (front == -1 || front > rear)
+            System.out.println("true");
+        else
+            System.out.println("false");
+    }
+
+    void display() {
+        if (front == -1 || front > rear) {
+            System.out.println("Queue Underflow");
+            return;
+        }
+        for (int i = front; i <= rear; i++)
+            System.out.print(arr[i] + " ");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Queue q = new Queue();
+
+        q.enqueue(1);
+        q.enqueue(2);
+        q.enqueue(3);
+        q.dequeue();
+        q.enqueue(4);
+        q.display();
+    }
+}
