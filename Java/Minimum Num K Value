@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    int k, num, min;
+
+    printf("Enter the number of values: ");
+    scanf("%d", &k);
+
+    printf("Enter %d numbers:\n", k);
+
+    scanf("%d", &min);   // Assume first number is minimum
+
+    for (int i = 2; i <= k; i++) {
+        scanf("%d", &num);
+
+        if (num < min)
+            min = num;
+    }
+
+    printf("Minimum number = %d\n", min);
+
+    return 0;
+}
