@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int e = sc.nextInt();
+        ArrayList<ArrayList<Integer>> g = new ArrayList<>();
+
+        for (int i = 0; i <= e + 1; i++)
+            g.add(new ArrayList<>());
+
+        int max = 0;
+        for (int i = 0; i < e; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            g.get(u).add(v);
+            g.get(v).add(u);
+            max = Math.max(max, Math.max(u, v));
+        }
+
+        boolean[] vis = new boolean[max + 1];
+        Queue<Integer> q = new LinkedList<>();
+
+        q.add(1);
+        vis[1] = true;
+
+        while (!q.isEmpty()) {
+            int x = q.poll();
+            System.out.print(x + " ");
+            for (int y : g.get(x)) {
+                if (!vis[y]) {
+                    vis[y] = true;
+                    q.add(y);
+                }
+            }
+        }
+    }
+}
