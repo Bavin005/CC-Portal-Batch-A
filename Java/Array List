@@ -1,0 +1,52 @@
+import java.util.*;
+
+public class Main {
+    static class Edge {
+        int to, cost;
+        Edge(int t, int c) {
+            to = t;
+            cost = c;
+        }
+    }
+
+    static ArrayList<Edge>[] graph;
+    static int[] res;
+    static int ans = 0;
+
+    static void dfs(int u, int parent, int energy, int sum) {
+        ans = Math.max(ans, sum);
+
+        for (Edge e : graph[u]) {
+            if (e.to != parent && energy >= e.cost) {
+                dfs(e.to, u, energy - e.cost, sum + res[e.to]);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int K = sc.nextInt();
+
+        res = new int[N + 1];
+        for (int i = 1; i <= N; i++)
+            res[i] = sc.nextInt();
+
+        graph = new ArrayList[N + 1];
+        for (int i = 1; i <= N; i++)
+            graph[i] = new ArrayList<>();
+
+        for (int i = 0; i < N - 1; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            int c = sc.nextInt();
+            graph[u].add(new Edge(v, c));
+            graph[v].add(new Edge(u, c));
+        }
+
+        dfs(1, 0, K, res[1]);
+
+        System.out.println(ans);
+    }
+}
