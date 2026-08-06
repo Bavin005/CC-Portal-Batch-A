@@ -1,0 +1,40 @@
+HTML TAGS
+
+<a>-anchor
+<b>-bold
+<body>-body of the page
+<br>-break
+<button>-button creation
+<col>-column
+<div>-division
+<embed>-embedded
+<font>
+<frame>
+<form>
+<footer>
+<h1>
+<h2>
+<h3>
+<h4>
+<h5>
+<h6>
+<head>
+<i>-italic
+<labels>
+<li>-list
+<link>
+<p>-paragraph
+<picture>
+<section>
+<search>
+<strong>
+<style>
+<td>-table data
+<tbody>
+<th>
+<tr>
+<table>
+<title>
+<ul>
+<ol>
+<video>
